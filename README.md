@@ -45,8 +45,10 @@ Or install it yourself as:
 		  }
 	end
 
+
 	@user.photo.url
 	> "http://demo.imgix.net/avatars/filename.jpg"
+
 
 	@user.photo.url(:medium)
 	> "http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64"
