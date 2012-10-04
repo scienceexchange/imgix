@@ -18,31 +18,39 @@ Or install it yourself as:
 
 ## Usage
 
-	has_imgix_attachment :photo,
-	  :subdomain  => "demo",
-	  :prefix     => "avatars",
-	  :default    => "default.png",
-	  :styles =>  {
-	    :small  => {
-	      :h    => 32,
-	      :w    => 32,
-	      :crop => "faces",
-	      :fit  => "crop"
-	    },
-	    :medium => {
-	      :h    => 64,
-	      :w    => 64,
-	      :crop => "faces",
-	      :fit  => "crop"
-	    },
-	    :large  => {
-	      :h    => 96,
-	      :w    => 96,
-	      :crop => "faces",
-	      :fit  => "crop"
-	    }
-	  }
+	class User < ActiveRecord::Base
+		has_imgix_attachment :photo,
+		  :subdomain  => "demo",
+		  :prefix     => "avatars",
+		  :default    => "default.png",
+		  :styles =>  {
+		    :small  => {
+		      :h    => 32,
+		      :w    => 32,
+		      :crop => "faces",
+		      :fit  => "crop"
+		    },
+		    :medium => {
+		      :h    => 64,
+		      :w    => 64,
+		      :crop => "faces",
+		      :fit  => "crop"
+		    },
+		    :large  => {
+		      :h    => 96,
+		      :w    => 96,
+		      :crop => "faces",
+		      :fit  => "crop"
+		    }
+		  }
+	end
 
+	@user.photo.url
+	> "http://demo.imgix.net/avatars/filename.jpg"
+
+	@user.photo.url(:medium)
+	> "http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64"
+	
 ## Contributing
 
 1. Fork it
