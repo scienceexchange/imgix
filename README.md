@@ -1,6 +1,6 @@
 # Imgix
 
-TODO: Write a gem description
+Super simple wrapper for the imgix.net API.
 
 ## Installation
 
@@ -18,7 +18,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+	has_imgix_attachment :photo,
+	  :subdomain  => "demo",
+	  :prefix     => "avatars",
+	  :default    => "default.png",
+	  :styles =>  {
+	    :small  => {
+	      :h    => 32,
+	      :w    => 32,
+	      :crop => "faces",
+	      :fit  => "crop"
+	    },
+	    :medium => {
+	      :h    => 64,
+	      :w    => 64,
+	      :crop => "faces",
+	      :fit  => "crop"
+	    },
+	    :large  => {
+	      :h    => 96,
+	      :w    => 96,
+	      :crop => "faces",
+	      :fit  => "crop"
+	    }
+	  }
 
 ## Contributing
 
