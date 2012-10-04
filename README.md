@@ -18,6 +18,8 @@ Or install it yourself as:
 
 ## Usage
 
+Basic configuration in the model (currently only supports :h, :w, :crop, :fit, and :bg)
+
 	class User < ActiveRecord::Base
 		has_imgix_attachment :photo,
 		  :subdomain  => "demo",
@@ -45,10 +47,12 @@ Or install it yourself as:
 		  }
 	end
 
+Retrieve the original image
 
 	@user.photo.url
 	> "http://demo.imgix.net/avatars/filename.jpg"
 
+Retrieve a specific style
 
 	@user.photo.url(:medium)
 	> "http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64"
