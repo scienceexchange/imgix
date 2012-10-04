@@ -10,7 +10,7 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
 Or install it yourself as:
 
@@ -56,6 +56,11 @@ Retrieve a specific style
 
 	@user.photo.url(:medium)
 	> "http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64"
+	
+Generate an image tag
+
+	imgix_tag(@user.photo, "medium", :alt => "test photo")
+	> "<img src="http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64" alt="test photo" />"
 	
 ## Contributing
 
