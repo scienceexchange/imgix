@@ -24,7 +24,7 @@ module Imgix
       class_attribute :options
       self.options = options
       
-      if attachment_definitions.nil?
+      if self.attachment_definitions.nil?
         self.attachment_definitions = {}
       else
         self.attachment_definitions = self.attachment_definitions.dup
