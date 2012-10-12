@@ -10,7 +10,7 @@ require 'imgix/view_helpers/imgix_tag'
 module Imgix
   def self.options
     @options ||= {
-      :protocol   => "http",
+      :protocol   => "https",
       :base_url   => "imgix.net"
     }
   end
