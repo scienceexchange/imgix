@@ -18,7 +18,7 @@ Or install it yourself as:
 
 ## Usage
 
-Basic configuration in the model (currently only supports :h, :w, :crop, :fit, and :bg)
+Basic configuration in the model
 
 	class User < ActiveRecord::Base
 		has_imgix_attachment :photo,
@@ -38,6 +38,15 @@ Basic configuration in the model (currently only supports :h, :w, :crop, :fit, a
 		      :crop => "faces",
 		      :fit  => "crop"
 		    },
+	      medium_wm: {
+	        h:   340,
+	        w:   420,
+	        fit: 'crop',
+	        mark: '/relative/watermark/path/Watermark1.png',
+	        markscale: 40,
+	        markpad: 20,
+	        markalign: 'center,middle'
+	      },
 		    :large  => {
 		      :h    => 96,
 		      :w    => 96,
@@ -56,12 +65,12 @@ Retrieve a specific style
 
 	@user.photo.url(:medium)
 	> "http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64"
-	
+
 Generate an image tag
 
 	imgix_tag(@user.photo, "medium", :alt => "test photo")
 	> "<img src="http://demo.imgix.net/avatars/filename.jpg?crop=faces&fit=crop&h=64&w=64" alt="test photo" />"
-	
+
 ## Contributing
 
 1. Fork it
