@@ -4,14 +4,14 @@ module Imgix
 
     def initialize(name, instance, params = {})
       @params   = self.class.default_options.merge(params)
-      @name     = name.present? ? name : @params[:default]
+      @name     = (name.nil? || name.empty?) ? name : @params[:default]
       @instance = instance
     end
 
     def url(style = nil)
-      base_url      = "#{Imgix.options[:protocol]}://#{@instance.options[:subdomain]}.#{Imgix.options[:base_url]}"
+      base_url = "#{Imgix.options[:protocol]}://#{@instance.options[:subdomain]}.#{Imgix.options[:base_url]}"
 
-      full_url      = [base_url, @instance.options[:prefix], file_name].compact.join("/")
+      full_url = [base_url, @instance.options[:prefix], file_name].compact.join("/")
 
       if style.present? && @params[:styles].include?(style.to_sym)
         [full_url, styles[style.to_sym].to_s].join("?")
