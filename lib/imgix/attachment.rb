@@ -3,9 +3,10 @@ module Imgix
     attr_reader :name, :instance, :options
 
     def initialize(name, instance, params = {})
-      @params   = self.class.default_options.merge(params)
-      @name     = (name.nil? || name.empty?) ? @params[:default] : name
+      # Name of a base imgix method, like :photo or :image, not file name.
+      @name = name
       @instance = instance
+      @params = self.class.default_options.merge(params)
     end
 
     def url(style = nil)
@@ -21,7 +22,12 @@ module Imgix
     end
 
     def file_name
-      @instance.send("#{@name}_file_name")
+      # Returns nil or ''.
+      @file_name = @instance.send("#{@name}_file_name")
+
+      # Setting to default image if nil or '' was returned.
+      @file_name = @params[:default] if (@file_name.nil? || @file_name.empty?)
+      @file_name
     end
 
     def content_type
