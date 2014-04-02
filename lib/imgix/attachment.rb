@@ -4,9 +4,9 @@ module Imgix
 
     def initialize(name, instance, params = {})
       # Name of a base imgix method, like :photo or :image, not file name.
-      @name      = name
-      @instance  = instance
-      @params    = self.class.default_options.merge(params)
+      @name = name
+      @instance = instance
+      @params = self.class.default_options.merge(params)
     end
 
     def url(style = nil)
