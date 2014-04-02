@@ -4,7 +4,7 @@ module Imgix
 
     def initialize(name, instance, params = {})
       @params   = self.class.default_options.merge(params)
-      @name     = (name.nil? || name.empty?) ? name : @params[:default]
+      @name     = (name.nil? || name.empty?) ? @params[:default] : name
       @instance = instance
     end
 
