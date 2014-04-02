@@ -22,7 +22,10 @@ module Imgix
     end
 
     def file_name
+      # Returns nil or ''.
       @file_name = @instance.send("#{@name}_file_name")
+
+      # Setting to default image if nil or '' was returned.
       @file_name = @params[:default] if (@file_name.nil? || @file_name.empty?)
       @file_name
     end
